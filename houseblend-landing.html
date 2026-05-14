@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Houseblend — NetSuite Consulting That Delivers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-dark: #B8860B;
+    --gold-light: #FAEEDA;
+    --gold-text: #412402;
+    --black: #0E0E0E;
+    --white: #FFFFFF;
+    --gray-50: #F7F6F3;
+    --gray-100: #EDEDEA;
+    --gray-200: #DDDDD9;
+    --gray-500: #8B8B85;
+    --gray-700: #3A3A37;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .display {
+    font-family: 'Syne', sans-serif;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ===================== NAV ===================== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+  }
+  .nav-links a { text-decoration: none; color: inherit; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--gold-text); transform: translateY(-1px); }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    padding: 100px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-light);
+    color: var(--gold-text);
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before { content: '●'; color: var(--gold); font-size: 8px; }
+
+  .hero h1 {
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: var(--black);
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: normal;
+    position: relative;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    opacity: 0.35;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--gray-700);
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-top: 24px;
+  }
+  .hero-trust-avatars {
+    display: flex;
+  }
+  .hero-trust-avatars span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    border: 2px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold-text);
+    margin-left: -8px;
+    font-family: 'Syne', sans-serif;
+  }
+  .hero-trust-avatars span:first-child { margin-left: 0; }
+
+  /* HERO FORM CARD */
+  .hero-form-card {
+    background: var(--black);
+    border-radius: var(--radius-xl);
+    padding: 36px 32px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-form-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(212,160,23,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-form-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+  .hero-form-card .form-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.1);
+  }
+  .form-group select option { background: #1a1a1a; color: var(--white); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .btn-hero {
+    width: 100%;
+    background: var(--gold);
+    color: var(--gold-text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-hero:hover { background: #E6B01A; transform: translateY(-1px); }
+  .btn-hero svg { width: 16px; height: 16px; }
+
+  .form-disclaimer {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ===================== LOGO BAR ===================== */
+  .logo-bar {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 28px 40px;
+    text-align: center;
+  }
+  .logo-bar-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+    font-family: 'Syne', sans-serif;
+  }
+  .logo-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .logo-pill {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gray-700);
+    padding: 6px 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 100px;
+    background: var(--white);
+  }
+
+  /* ===================== SECTION WRAPPER ===================== */
+  .section { padding: 96px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-divider { border: none; border-top: 1px solid var(--gray-100); }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before { content: '//'; opacity: 0.5; }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    max-width: 620px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--gray-700);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ===================== PAIN SECTION ===================== */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .pain-card {
+    padding: 28px 24px;
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .pain-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px rgba(212,160,23,0.1);
+  }
+  .pain-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: var(--gold-dark);
+  }
+  .pain-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--black); }
+  .pain-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+
+  /* ===================== SERVICES ===================== */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    padding: 32px 28px;
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+    transform-origin: left;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+
+  /* ===================== FORMULA ===================== */
+  .formula-section {
+    background: var(--black);
+    padding: 96px 40px;
+    color: var(--white);
+  }
+  .formula-inner { max-width: 1100px; margin: 0 auto; }
+  .formula-section .section-title { color: var(--white); }
+  .formula-section .section-sub { color: rgba(255,255,255,0.55); }
+  .formula-section .section-label { color: var(--gold); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 16px;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: calc(8.33% + 20px);
+    right: calc(8.33% + 20px);
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .step { text-align: center; padding: 0 8px; position: relative; }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--gold-text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .step h3 { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+  .step p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ===================== STATS ===================== */
+  .stats-strip {
+    background: var(--gold);
+    padding: 48px 40px;
+  }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--gold-text);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: rgba(65,36,2,0.7);
+    font-weight: 500;
+  }
+
+  /* ===================== TESTIMONIALS ===================== */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .testi-card::before {
+    content: '"';
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--gold-light);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    line-height: 1;
+  }
+  .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gray-700);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    color: var(--gold-text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 600; font-size: 14px; }
+  .testi-role { font-size: 13px; color: var(--gray-500); }
+
+  /* ===================== MID-PAGE LEAD CAPTURE ===================== */
+  .mid-cta {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 80px 40px;
+  }
+  .mid-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .mid-cta h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+  .mid-cta p { color: var(--gray-700); font-size: 16px; line-height: 1.65; }
+  .mid-cta-checklist { margin-top: 20px; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .mid-cta-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray-700);
+  }
+  .mid-cta-checklist li::before {
+    content: '✓';
+    color: var(--gold-dark);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .mid-form {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+  }
+  .mid-form h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .mid-form .form-sub-light { font-size: 13px; color: var(--gray-500); margin-bottom: 24px; }
+  .form-group-light { margin-bottom: 14px; }
+  .form-group-light label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    margin-bottom: 5px;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .form-group-light input,
+  .form-group-light select {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    color: var(--black);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-group-light input:focus,
+  .form-group-light select:focus { border-color: var(--gold); }
+  .form-group-light select option { color: var(--black); }
+
+  .btn-mid {
+    width: 100%;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-mid:hover { background: var(--gold); color: var(--gold-text); }
+
+  /* ===================== EXIT INTENT BANNER ===================== */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--black);
+    color: var(--white);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 200;
+    border-top: 2px solid var(--gold);
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    flex-wrap: wrap;
+  }
+  .sticky-bar.visible { transform: translateY(0); }
+  .sticky-bar p { font-size: 15px; font-weight: 500; }
+  .sticky-bar p strong { color: var(--gold); font-family: 'Syne', sans-serif; }
+  .sticky-bar-form { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .sticky-bar-form input {
+    padding: 9px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: var(--white);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    min-width: 200px;
+  }
+  .sticky-bar-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .sticky-bar-form input:focus { border-color: var(--gold); }
+  .sticky-bar-form button {
+    background: var(--gold);
+    color: var(--gold-text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .sticky-bar-form button:hover { background: #E6B01A; }
+  .sticky-bar-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.15s;
+  }
+  .sticky-bar-close:hover { color: var(--white); }
+
+  /* ===================== FINAL CTA ===================== */
+  .final-cta {
+    padding: 100px 40px;
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+  }
+  .final-cta .section-label { justify-content: center; color: var(--gold); }
+  .final-cta h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--white); max-width: 700px; margin: 0 auto 20px; }
+  .final-cta p { color: rgba(255,255,255,0.55); font-size: 17px; max-width: 480px; margin: 0 auto 48px; line-height: 1.7; }
+
+  .final-form {
+    max-width: 560px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-xl);
+    padding: 40px 36px;
+  }
+  .final-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .final-form .form-group label { color: rgba(255,255,255,0.5); }
+  .final-form .form-group input,
+  .final-form .form-group select {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .final-form .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    resize: none;
+    transition: border-color 0.15s;
+    line-height: 1.5;
+  }
+  .final-form .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .final-form .form-group textarea:focus { border-color: var(--gold); }
+
+  .btn-final {
+    width: 100%;
+    background: var(--gold);
+    color: var(--gold-text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: -0.02em;
+  }
+  .btn-final:hover { background: #E6B01A; transform: translateY(-1px); }
+
+  .final-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .final-guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .final-guarantee-item::before { content: '✓'; color: var(--gold); }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    background: #080808;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-links a { text-decoration: none; color: inherit; transition: color 0.15s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.25); }
+
+  /* ===================== SUCCESS STATE ===================== */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success .check {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--gold-text);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-weight: 700;
+  }
+  .form-success h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--white); }
+  .form-success p { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 60px 20px 48px; gap: 48px; }
+    .section { padding: 64px 20px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .steps::before { display: none; }
+    .mid-cta-inner { grid-template-columns: 1fr; gap: 36px; }
+    .mid-cta, .final-cta { padding: 64px 20px; }
+    .final-form { padding: 28px 20px; }
+    .final-form-row { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; }
+    .logo-bar { padding: 24px 20px; }
+    .sticky-bar { padding: 16px 20px; }
+    .formula-section { padding: 64px 20px; }
+  }
+
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero > *:nth-child(2) { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+
+<!-- STICKY EXIT BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <p><strong>Free NetSuite audit</strong> — find out exactly what's costing you time and money.</p>
+  <div class="sticky-bar-form">
+    <input type="email" placeholder="Your work email" id="stickyEmail" />
+    <button onclick="submitForm('sticky')">Claim free audit →</button>
+  </div>
+  <button class="sticky-bar-close" onclick="document.getElementById('stickyBar').classList.remove('visible')">×</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">house<span>blend</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Book a free call</a>
+</nav>
+
+<!-- HERO -->
+<section style="max-width:1100px; margin:0 auto;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Oracle NetSuite Alliance Partner</div>
+      <h1>NetSuite that <em>actually works</em> for your business</h1>
+      <p>We rescue failed implementations, unlock hidden performance, and build NetSuite around how your team really operates — not a generic template.</p>
+      <div class="hero-trust">
+        <div class="hero-trust-avatars">
+          <span>SR</span><span>MT</span><span>AK</span><span>JL</span><span>PW</span>
+        </div>
+        Trusted by 50+ companies including A2X, Knix &amp; Firewood
+      </div>
+    </div>
+
+    <div class="hero-form-card">
+      <h3>Get a free strategy call</h3>
+      <p class="form-sub">30 minutes. No pitch. Just an honest look at your NetSuite situation.</p>
+
+      <div id="heroFormWrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="Jane" id="heroFirst" />
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Smith" id="heroLast" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Work email</label>
+          <input type="email" placeholder="jane@company.com" id="heroEmail" />
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Acme Inc." id="heroCompany" />
+        </div>
+        <div class="form-group">
+          <label>Biggest NetSuite challenge</label>
+          <select id="heroChallenge">
+            <option value="" disabled selected>Select one...</option>
+            <option>Stalled or failed implementation</option>
+            <option>Reports I can't trust</option>
+            <option>Too many manual workarounds</option>
+            <option>PE-backed integration / consolidation</option>
+            <option>Need advanced modules or customisation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="btn-hero" onclick="submitForm('hero')">
+          Book my free strategy call
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <p class="form-disclaimer">No spam. No commitment. We'll follow up within 1 business day.</p>
+      </div>
+
+      <div class="form-success" id="heroSuccess">
+        <div class="check">✓</div>
+        <h4>You're booked in!</h4>
+        <p>We'll reach out within 1 business day to confirm your call time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <p class="logo-bar-label">Companies we've transformed</p>
+  <div class="logo-row">
+    <span class="logo-pill">A2X</span>
+    <span class="logo-pill">Knix</span>
+    <span class="logo-pill">Firewood</span>
+    <span class="logo-pill">Obsidian</span>
+    <span class="logo-pill">Solink</span>
+    <span class="logo-pill">Bostro</span>
+    <span class="logo-pill">FDA Institute</span>
+    <span class="logo-pill">Alto IRA</span>
+  </div>
+</div>
+
+<hr class="section-divider" />
+
+<!-- PAIN SECTION -->
+<section class="section" id="about">
+  <p class="section-label">The problem</p>
+  <h2 class="section-title">NetSuite promised a lot. Did it deliver?</h2>
+  <p class="section-sub">Most companies only use 40% of what NetSuite can do — because it was set up for a generic business, not theirs.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">⚠</div>
+      <h3>Messy implementation</h3>
+      <p>Your system was configured for a generic business. Workarounds are piling up and nobody trusts the data.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📊</div>
+      <h3>Reports you can't trust</h3>
+      <p>Finance is still pulling data manually into spreadsheets because NetSuite won't give them what they need.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🔄</div>
+      <h3>Stalled rollout</h3>
+      <p>Your NetSuite project has been "almost done" for months and the team has quietly lost confidence.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">💸</div>
+      <h3>Hidden ROI</h3>
+      <p>You're paying for an enterprise ERP but still running on gut feel and manual reconciliation.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <p class="section-label">What we do</p>
+  <h2 class="section-title">NetSuite expertise across every stage</h2>
+  <p class="section-sub">Whether you're starting fresh, stuck mid-implementation, or scaling fast — we've done it before.</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <p class="service-num">01 — Rescue</p>
+      <h3>NetSuite rescue missions</h3>
+      <p>We take over troubled implementations and get them across the finish line — fast, without starting from scratch.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">02 — Optimise</p>
+      <h3>NetSuite enhancement</h3>
+      <p>Unlock the features you're already paying for. Custom workflows, modules, and reporting built for your ops.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">03 — Architect</p>
+      <h3>Architecture & strategy</h3>
+      <p>Build a system that scales with you. We design the right structure before writing a single configuration.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">04 — Scale</p>
+      <h3>PE-backed growth</h3>
+      <p>Specialised in portfolio companies that need rapid integration, consolidation, and investor-grade reporting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULA -->
+<div class="formula-section">
+  <div class="formula-inner">
+    <p class="section-label" style="color:var(--gold);">Our process</p>
+    <h2 class="section-title" style="color:var(--white);">The Houseblend Formula™</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.5); margin-bottom:48px;">A proven 6-step process built around your business — not a template we've used 100 times before.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Discover</h3><p>Map your ops &amp; gaps</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Design</h3><p>Blueprint the solution</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Build</h3><p>Configure &amp; customise</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Test</h3><p>QA with your team</p></div>
+      <div class="step"><div class="step-num">5</div><h3>Launch</h3><p>Go live with confidence</p></div>
+      <div class="step"><div class="step-num">6</div><h3>Support</h3><p>Ongoing optimisation</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div><div class="stat-num">50+</div><div class="stat-label">Clients transformed</div></div>
+    <div><div class="stat-num">98%</div><div class="stat-label">On-time delivery rate</div></div>
+    <div><div class="stat-num">3×</div><div class="stat-label">Average efficiency gain</div></div>
+    <div><div class="stat-num">6</div><div class="stat-label">Industries served</div></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="results">
+  <p class="section-label">Client results</p>
+  <h2 class="section-title">What our clients say</h2>
+  <p class="section-sub" style="margin-bottom:48px;">Real results from real companies who trusted us with their NetSuite.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Houseblend turned our NetSuite chaos into a system our whole finance team actually loves. We closed our books 4 days faster last quarter."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SR</div>
+        <div><div class="testi-name">Sarah R.</div><div class="testi-role">CFO, E-commerce brand</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We were 9 months into a failed implementation. Houseblend rescued it in 6 weeks. I wish we'd called them first instead of suffering through it."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MT</div>
+        <div><div class="testi-name">Marcus T.</div><div class="testi-role">COO, PE-backed retailer</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The team understood our business model immediately. No long handholding — they got in and built exactly what we needed, on time."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AK</div>
+        <div><div class="testi-name">Amanda K.</div><div class="testi-role">VP Finance, SaaS company</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE LEAD CAPTURE -->
+<div class="mid-cta">
+  <div class="mid-cta-inner">
+    <div>
+      <h2>Not sure where to start?</h2>
+      <p>Book a free NetSuite audit. In 30 minutes, we'll tell you exactly what's broken, what's fixable, and what it would take to get there.</p>
+      <ul class="mid-cta-checklist">
+        <li>Identify your top 3 quick wins</li>
+        <li>Benchmark your setup against best practice</li>
+        <li>Get a plain-English improvement roadmap</li>
+        <li>Completely free — no obligation</li>
+      </ul>
+    </div>
+    <div class="mid-form">
+      <h3>Book your free audit</h3>
+      <p class="form-sub-light">Takes 30 seconds. We'll follow up same day.</p>
+      <div id="midFormWrap">
+        <div class="form-group-light">
+          <label>Full name</label>
+          <input type="text" placeholder="Jane Smith" id="midName" />
+        </div>
+        <div class="form-group-light">
+          <label>Work email</label>
+          <input type="email" placeholder="jane@company.com" id="midEmail" />
+        </div>
+        <div class="form-group-light">
+          <label>Your role</label>
+          <select id="midRole">
+            <option value="" disabled selected>Select...</option>
+            <option>CFO / Finance Director</option>
+            <option>COO / Operations</option>
+            <option>CEO / Founder</option>
+            <option>IT / Systems Manager</option>
+            <option>Project Manager</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group-light">
+          <label>Company size</label>
+          <select id="midSize">
+            <option value="" disabled selected>Select...</option>
+            <option>1–50 employees</option>
+            <option>51–200 employees</option>
+            <option>201–1,000 employees</option>
+            <option>1,000+ employees</option>
+          </select>
+        </div>
+        <button class="btn-mid" onclick="submitForm('mid')">Get my free audit →</button>
+      </div>
+      <div class="form-success" id="midSuccess" style="color:var(--black);">
+        <div class="check" style="background:var(--gold);color:var(--gold-text);">✓</div>
+        <h4 style="color:var(--black);">Audit request received!</h4>
+        <p style="color:var(--gray-500);">We'll be in touch within 1 business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="contact">
+  <p class="section-label">Get in touch</p>
+  <h2>Ready to unlock your NetSuite's full potential?</h2>
+  <p>Tell us about your situation. We'll give you an honest answer on whether and how we can help.</p>
+
+  <div class="final-form">
+    <div id="finalFormWrap">
+      <div class="final-form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Jane" id="finalFirst" />
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Smith" id="finalLast" />
+        </div>
+      </div>
+      <div class="final-form-row">
+        <div class="form-group">
+          <label>Work email</label>
+          <input type="email" placeholder="jane@company.com" id="finalEmail" />
+        </div>
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="+1 555 000 0000" id="finalPhone" />
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label>Company name</label>
+        <input type="text" placeholder="Acme Inc." id="finalCompany" />
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label>What's going on with your NetSuite?</label>
+        <textarea rows="4" placeholder="Describe your current challenge or goal..." id="finalMessage"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:0;">
+        <label>How urgent is this?</label>
+        <select id="finalUrgency">
+          <option value="" disabled selected>Select...</option>
+          <option>We're in crisis — need help ASAP</option>
+          <option>Project is stalled and has been for weeks</option>
+          <option>Planning a new project in the next 3 months</option>
+          <option>Exploring options for future planning</option>
+        </select>
+      </div>
+      <button class="btn-final" onclick="submitForm('final')">Send my enquiry — let's talk →</button>
+    </div>
+    <div class="form-success" id="finalSuccess">
+      <div class="check">✓</div>
+      <h4>Message received!</h4>
+      <p>Our team will be in touch within 1 business day.</p>
+    </div>
+  </div>
+
+  <div class="final-guarantee">
+    <div class="final-guarantee-item">No commitment required</div>
+    <div class="final-guarantee-item">Response within 1 business day</div>
+    <div class="final-guarantee-item">100% confidential</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">house<span>blend</span></div>
+  <div class="footer-links">
+    <a href="#">Privacy policy</a>
+    <a href="#">Terms</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2025 Houseblend Consulting Inc.</p>
+</footer>
+
+<script>
+  // Sticky bar shows after 8s or 40% scroll
+  let stickyShown = false;
+  function showSticky() {
+    if (!stickyShown) {
+      stickyShown = true;
+      document.getElementById('stickyBar').classList.add('visible');
+    }
+  }
+  setTimeout(showSticky, 8000);
+  window.addEventListener('scroll', function() {
+    const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollPct > 0.4) showSticky();
+  });
+
+  // Form submission handler
+  function submitForm(formId) {
+    const wrapIds = { hero: 'heroFormWrap', mid: 'midFormWrap', final: 'finalFormWrap', sticky: null };
+    const successIds = { hero: 'heroSuccess', mid: 'midSuccess', final: 'finalSuccess', sticky: null };
+
+    if (formId === 'sticky') {
+      const email = document.getElementById('stickyEmail').value;
+      if (!email || !email.includes('@')) {
+        document.getElementById('stickyEmail').style.borderColor = '#E24B4A';
+        return;
+      }
+      document.getElementById('stickyBar').innerHTML = '<p style="color:var(--gold);font-family:Syne,sans-serif;font-weight:700;">✓ &nbsp;We\'ll be in touch within 1 business day!</p>';
+      return;
+    }
+
+    const wrap = document.getElementById(wrapIds[formId]);
+    const success = document.getElementById(successIds[formId]);
+
+    // Basic validation on email
+    const emailFields = { hero: 'heroEmail', mid: 'midEmail', final: 'finalEmail' };
+    const emailEl = document.getElementById(emailFields[formId]);
+    if (!emailEl.value || !emailEl.value.includes('@')) {
+      emailEl.style.borderColor = '#E24B4A';
+      emailEl.focus();
+      return;
+    }
+
+    wrap.style.display = 'none';
+    success.style.display = 'block';
+  }
+</script>
+</body>
+</html>
